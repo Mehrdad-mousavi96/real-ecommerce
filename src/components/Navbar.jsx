@@ -6,9 +6,7 @@ import { UserContext } from "../useContext";
 const Navbar = () => {
   const userContext = useContext(UserContext);
 
-  const logout = () => {
-    userContext.dispatch({ type: 'logout' });
-  };
+  const logout = () => userContext.dispatch({ type: "logout" });
 
   return (
     <nav className="bg-gray-800">
@@ -67,6 +65,11 @@ const Navbar = () => {
                     Dashboard
                   </Link>
                 )}
+                {userContext.user.isLoggedIn && (
+                  <a className="text-orange-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    {userContext.user.currentUserName.toUpperCase()}
+                  </a>
+                )}
 
                 {!userContext.user.isLoggedIn && (
                   <Link
@@ -82,7 +85,15 @@ const Navbar = () => {
                     to={"/register"}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Register
+                    Sign Up
+                  </Link>
+                )}
+                {userContext.user.isLoggedIn && (
+                  <Link
+                    to={"/store"}
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Store
                   </Link>
                 )}
 
@@ -93,15 +104,6 @@ const Navbar = () => {
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Logout
-                  </Link>
-                )}
-
-                {userContext.user.isLoggedIn && (
-                  <Link
-                    to={"/store"}
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Store
                   </Link>
                 )}
               </div>

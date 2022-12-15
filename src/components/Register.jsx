@@ -57,7 +57,6 @@ const Register = (props) => {
         },
       });
       props.history.replace("/dashboard");
-      console.log(data);
     }
 
     e.target.reset();

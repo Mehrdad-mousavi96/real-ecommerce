@@ -5,6 +5,7 @@ import { UserContext } from "../useContext";
 
 const Login = (props) => {
   const userContext = useContext(UserContext);
+  const [loginMsg, setLoginMsg] = useState("");
 
   const {
     register,
@@ -37,7 +38,7 @@ const Login = (props) => {
         });
         props.history.replace("/dashboard");
       } else {
-        alert("incorrect");
+        setLoginMsg("Invalid info, please try again");
       }
     }
   };
@@ -155,6 +156,11 @@ const Login = (props) => {
               >
                 Sign in
               </button>
+
+              {loginMsg && (
+                <p className="w-full text-center text-red-900">{loginMsg}</p>
+              )}
+
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <Link

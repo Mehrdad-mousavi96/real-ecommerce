@@ -132,36 +132,6 @@
       "country": "Iran",
       "receiveNewsLetter": "",
       "id": 2
-    },
-    {
-      "email": "asghar@gmail.com",
-      "password": "Asghar123",
-      "fullName": "asghar",
-      "dateOfBirth": "2022-12-09",
-      "gender": "male",
-      "country": "Usa",
-      "receiveNewsLetter": "",
-      "id": 3
-    },
-    {
-      "email": "ozgal@gmail.com",
-      "password": "Ozgal123",
-      "fullName": "ozgal",
-      "dateOfBirth": "2022-12-22",
-      "gender": "male",
-      "country": "Indian",
-      "receiveNewsLetter": false,
-      "id": 4
-    },
-    {
-      "email": "mehrdad@gmia.com",
-      "password": "Mehrdad123",
-      "fullName": "mehrdad",
-      "dateOfBirth": "1996-10-29",
-      "gender": "male",
-      "country": "Iran",
-      "receiveNewsLetter": "true",
-      "id": 5
     }
   ],
   "orders": [
@@ -175,21 +145,21 @@
     {
       "userId": 1,
       "productId": 4,
-      "quantity": 1,
-      "isPaymentCompleted": true,
+      "quantity": 3,
+      "isPaymentCompleted": false,
       "id": 3
     },
     {
       "userId": 1,
       "productId": 5,
-      "quantity": 1,
-      "isPaymentCompleted": true,
+      "quantity": 2,
+      "isPaymentCompleted": false,
       "id": 4
     },
     {
       "userId": 1,
       "productId": 2,
-      "quantity": 1,
+      "quantity": 12,
       "isPaymentCompleted": true,
       "id": 5
     },
@@ -197,8 +167,8 @@
       "id": 6,
       "userId": 1,
       "productId": 2,
-      "quantity": 1,
-      "isPaymentCompleted": true
+      "quantity": 5,
+      "isPaymentCompleted": false
     }
   ]
 }
