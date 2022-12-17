@@ -136,39 +136,11 @@
   ],
   "orders": [
     {
-      "id": 2,
-      "userId": 1,
-      "productId": 8,
-      "quantity": 7,
-      "isPaymentCompleted": true
-    },
-    {
+      "id": 3,
       "userId": 1,
       "productId": 4,
       "quantity": 3,
-      "isPaymentCompleted": false,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "productId": 5,
-      "quantity": 2,
-      "isPaymentCompleted": false,
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "productId": 2,
-      "quantity": 12,
-      "isPaymentCompleted": true,
-      "id": 5
-    },
-    {
-      "id": 6,
-      "userId": 1,
-      "productId": 2,
-      "quantity": 5,
-      "isPaymentCompleted": false
+      "isPaymentCompleted": true
     }
   ]
 }
