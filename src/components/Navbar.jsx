@@ -11,7 +11,7 @@ const Navbar = () => {
   const logout = () => userContext.dispatch({ type: "logout" });
 
   return (
-    <nav className="bg-gray-800 w-full h-16 flex items-center justify-between mx-auto fixed">
+    <nav className="bg-gray-800 w-full h-16 flex items-center justify-between mx-auto">
       <div className=" max-w-7xl px-2 sm:px-6 lg:px-8">
         <div>
           <div className="flex space-x-4">
@@ -49,16 +49,6 @@ const Navbar = () => {
                 Store
               </Link>
             )}
-
-            {userContext.user.isLoggedIn && (
-              <Link
-                onClick={logout}
-                to={"/login"}
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Logout
-              </Link>
-            )}
           </div>
         </div>
       </div>
@@ -89,19 +79,25 @@ const Navbar = () => {
                 <ul className="top-5 right-0 absolute w-28 bg-gray-700 flex justify-center items-center flex-col rounded-md py-2">
                   <li className="text-white text-sm py-2 bg-transparent hover:bg-gray-600 w-full flex items-center justify-center cursor-pointer tracking-wider font-semibold">
                     {userContext.user.isLoggedIn && (
-                      <p className="text-gray-300">
+                      <p
+                        className="text-gray-300"
+                        onClick={() => setDrop(false)}
+                      >
                         {userContext.user.currentUserName.toUpperCase()}
                       </p>
                     )}
                   </li>
-                  <li className=" text-white text-sm py-2 bg-transparent hover:bg-gray-600 w-full flex items-center justify-center cursor-pointer tracking-wider font-semibold">
+                  <li
+                    onClick={() => setDrop(false)}
+                    className=" text-white text-sm py-2 bg-transparent hover:bg-gray-600 w-full flex items-center justify-center cursor-pointer tracking-wider font-semibold"
+                  >
                     Settings
                   </li>
-                  <li className=" text-white text-sm py-2 bg-transparent hover:bg-gray-600 w-full flex items-center justify-center cursor-pointer tracking-wider font-semibold">
+                  <li onClick={() => setDrop(false)} className=" text-white text-sm py-2 bg-transparent hover:bg-gray-600 w-full flex items-center justify-center cursor-pointer tracking-wider font-semibold">
                     {userContext.user.isLoggedIn && (
-                      <Link onClick={logout} to={"/login"}>
-                        Logout
-                      </Link>
+                        <Link onClick={logout} to={"/login"} className='w-full flex justify-center items-center'>
+                          Logout
+                        </Link>
                     )}
                   </li>
                 </ul>

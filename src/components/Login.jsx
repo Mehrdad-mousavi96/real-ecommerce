@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { UserContext } from "../useContext";
+import Dashboard from "./Dashboard";
 
 const Login = (props) => {
   const userContext = useContext(UserContext);
   const [loginMsg, setLoginMsg] = useState("");
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,7 +39,7 @@ const Login = (props) => {
             currentUserName: responseBody[0].fullName,
           },
         });
-        props.history.replace("/dashboard");
+        navigate("/dashboard");
       } else {
         setLoginMsg("Invalid info, please try again");
       }
@@ -44,7 +47,7 @@ const Login = (props) => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"

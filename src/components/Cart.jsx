@@ -7,8 +7,8 @@ const Cart = ({ order, product, onBuyNowClick, onDeleteClick }) => {
   const [heart, setHeart] = useState(false);
 
   return (
-    <div className="flex font-sans my-4 bg-red-800 w-full w-20">
-      <div className="flex-none w-56 relative">
+    <div className="flex m-4">
+      <div className="flex-none w-56 relative ">
         <img
           src={product.img}
           alt=""

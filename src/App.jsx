@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from "react";
 import {
-  BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
+  BrowserRouter,
+  Routes,
   useLocation,
 } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -44,16 +44,16 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ user, dispatch }}>
-      <Router>
+      <BrowserRouter>
         <Navbar />
-        <Switch>
-          <Route path={["/", "/login", "/signin"]} exact component={Login} />
-          <Route path={["/register", "/signup"]} exact component={Register} />
-          <Route path={"/dashboard"} exact component={Dashboard} />
-          <Route path={"/store"} exact component={Store} />
-          <Route path={"*"} exact component={NoMatchPage} />
-        </Switch>
-      </Router>
+        <Routes>
+          <Route path={"/"} exact element={<Login />} />
+          <Route path={"register"} exact element={<Register />} />
+          <Route path={"/dashboard"} exact element={<Dashboard />} />
+          <Route path={"/store"} exact element={<Store />} />
+          <Route path={"*"} exact element={<NoMatchPage />} />
+        </Routes>
+      </BrowserRouter>
     </UserContext.Provider>
   );
 };

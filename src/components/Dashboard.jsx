@@ -65,74 +65,63 @@ const Dashboard = () => {
   };
 
   const onDeleteClick = async (orderId) => {
-    if (window.confirm('Are you sure to delete this item?')) {
-      let orderResponse = await fetch(`http://localhost:5001/orders/${orderId}`, {
-        method: 'delete'
-      })
+    if (window.confirm("Are you sure to delete this item?")) {
+      let orderResponse = await fetch(
+        `http://localhost:5001/orders/${orderId}`,
+        {
+          method: "delete",
+        }
+      );
       if (orderResponse.ok) {
-        let orderResponseBody = orderResponse.json()
-        loadDatafromDataBase()
+        let orderResponseBody = orderResponse.json();
+        loadDatafromDataBase();
       }
     }
-  }
+  };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col max-w-[1200px] mx-auto w-5/6">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
           <div className="overflow-hidden">
-            {console.log(OrdersService.getPreviousOrders(orders).length)}
-            {/* Paid Orders */}
-            <table className={" w-full bg-gray-200"}>
-              {OrdersService.getPreviousOrders(orders).length > 0 && (
-                <thead className="border-b bg-blue-400">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Product Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Price
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Qunatity
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-              )}
-              {OrdersService.getPreviousOrders(orders).map((order) => (
-                <Paid key={order.id} order={order} product={order.product} />
-              ))}
-            </table>
-            {/* end of Paid Orders */}
-
             {/* cart */}
-            <div className=" grid grid-cols-2 px-8">
+            {OrdersService.getCart(orders).length > 0 && (
+              <div className="w-full h-20 flex justify-center items-center mx-auto">
+                <h1 className="text-2xl font-light border border-slate-900 px-4 py-2 rounded-sm bg-slate-900 text-white">
+                  Your Cart
+                </h1>
+              </div>
+            )}
+            <div className=" grid grid-cols-2 px-8 ">
               {OrdersService.getCart(orders).map((order) => (
-                <Cart
-                  key={order.id}
-                  order={order}
-                  product={order.product}
-                  onBuyNowClick={onBuyNowClick}
-                  onDeleteClick={onDeleteClick}
-                />
+                <div className="">
+                  <Cart
+                    key={order.id}
+                    order={order}
+                    product={order.product}
+                    onBuyNowClick={onBuyNowClick}
+                    onDeleteClick={onDeleteClick}
+                  />
+                </div>
               ))}
             </div>
             {/* end of cart */}
+
+            {OrdersService.getPreviousOrders(orders).length > 0 && (
+              <div className="w-full h-20 flex justify-center items-center mx-auto">
+                <h1 className="text-2xl font-light border border-slate-900 px-4 py-2 rounded-sm bg-slate-900 text-white">
+                  Paid Orders
+                </h1>
+              </div>
+            )}
+            <div className="flex">
+              {/* Paid Orders */}
+
+              {OrdersService.getPreviousOrders(orders).map((order) => (
+                <Paid key={order.id} order={order} product={order.product} />
+              ))}
+              {/* end of Paid Orders */}
+            </div>
           </div>
         </div>
       </div>

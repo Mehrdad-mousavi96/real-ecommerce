@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../useContext";
 
 const Register = (props) => {
   const userContext = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -56,7 +58,7 @@ const Register = (props) => {
           currentUserName: data.fullName,
         },
       });
-      props.history.replace("/dashboard");
+      navigate("/dashboard");
     }
 
     e.target.reset();
